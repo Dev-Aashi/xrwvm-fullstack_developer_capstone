@@ -15,6 +15,11 @@ import json
 from django.views.decorators.csrf import csrf_exempt
 from .populate import initiate
 from .models import CarMake, CarModel
+# Uncomment the imports below before you add the function code
+import requests
+import os
+from dotenv import load_dotenv
+from .restapis import get_request, analyze_review_sentiments, post_review
 
 # Get an instance of a logger
 logger = logging.getLogger(__name__)
@@ -43,6 +48,8 @@ def logout_request(request):
     logout(request)
     data = {"userName":""}
     return JsonResponse(data)
+
+
 
 # Create a `registration` view to handle sign up request
 @csrf_exempt
